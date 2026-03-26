@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>METE 451 Quiz</title>
+    <title>METE 151 Quiz</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -11,10 +11,10 @@
   </head>
   <body>
     <div id="root"></div>
-    
+
     <script type="text/babel">
       const { useState, useEffect } = React;
-      
+
       const AlertCircle = ({ className }) => (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <circle cx="12" cy="12" r="10" />
@@ -22,21 +22,21 @@
           <line x1="12" y1="16" x2="12.01" y2="16" />
         </svg>
       );
-      
+
       const Lock = ({ className }) => (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
       );
-      
+
       const CheckCircle = ({ className }) => (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
           <polyline points="22 4 12 14.01 9 11.01" />
         </svg>
       );
-      
+
       const Timer = ({ className }) => (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <circle cx="12" cy="12" r="10" />
@@ -55,187 +55,203 @@
         const [quizSubmitted, setQuizSubmitted] = useState(false);
         const [adminPassword, setAdminPassword] = useState("");
         const [showAdminLogin, setShowAdminLogin] = useState(false);
+        const [finalResults, setFinalResults] = useState(null);
 
         const questions = [
           {
             id: 1,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "Hydrocyclone classification fundamentally differs from gravitational classification because the controlling field is predominantly:",
+            question: "A mine reduces tailings while increasing yield. What is achieved?",
             options: [
-              "radial inertial dominance",
-              "tangential centrifugal dominance",
-              "axial centrifugal dominance",
-              "radial gravitational dominance",
+              "Maximizing metal recovery and minimizing waste",
+              "Increasing ore supply and reducing labor cost",
+              "Reducing energy use and increasing extraction time",
+              "Improving safety measures and limiting processing",
             ],
-            correctAnswer: "tangential centrifugal dominance",
+            correctAnswer: "Maximizing metal recovery and minimizing waste",
           },
           {
             id: 2,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "The tangential or involuted feed entry in a hydrocyclone is primarily intended to:",
+            question: "Improving beneficiation efficiency mainly helps to:",
             options: [
-              "stabilize overflow pressure",
-              "initiate rotational slurry motion",
-              "reduce feed turbulence",
-              "equalize particle velocities",
+              "Increase exploration activities and workforce size",
+              "Reduce operational costs and improve profitability",
+              "Decrease ore quality and increase processing time",
+              "Eliminate refining steps and simplify extraction",
             ],
-            correctAnswer: "initiate rotational slurry motion",
+            correctAnswer: "Reduce operational costs and improve profitability",
           },
           {
             id: 3,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "Variation in the cross-sectional shape of the inlet pipe mainly influences classification through changes in:",
+            question: "Recycling process residues in mining supports:",
             options: [
-              "particle density distribution",
-              "internal velocity profile",
-              "slurry viscosity gradient",
-              "centrifugal acceleration magnitude",
+              "Faster depletion of mineral reserves",
+              "Increased variability in ore composition",
+              "Reduction in environmental impact levels",
+              "Expansion of mining exploration zones",
             ],
-            correctAnswer: "internal velocity profile",
+            correctAnswer: "Reduction in environmental impact levels",
           },
           {
             id: 4,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "The vortex finder extending below the feed chamber primarily ensures that:",
+            question: "Why conduct feasibility studies before extraction?",
             options: [
-              "underflow turbulence is minimized",
-              "overflow withdrawal occurs from the inner vortex",
-              "feed pressure losses are reduced",
-              "coarse particles bypass separation",
+              "To improve equipment maintenance planning",
+              "To support material testing and decisions",
+              "To increase labor requirements in mining",
+              "To reduce environmental monitoring costs",
             ],
-            correctAnswer: "overflow withdrawal occurs from the inner vortex",
+            correctAnswer: "To support material testing and decisions",
           },
           {
             id: 5,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "The inverted conical section of a hydrocyclone contributes to separation mainly by:",
+            question: "Reducing processing cost while maintaining output indicates:",
             options: [
-              "inducing axial pressure recovery",
-              "concentrating coarse particles toward the apex",
-              "reducing swirl intensity",
-              "increasing overflow stability",
+              "Improved process efficiency and cost control",
+              "Increased energy demand and lower recovery",
+              "Reduced ore quality and higher waste levels",
+              "Expanded mining area and longer timelines",
             ],
-            correctAnswer: "concentrating coarse particles toward the apex",
+            correctAnswer: "Improved process efficiency and cost control",
           },
           {
             id: 6,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "Protective linings such as rubber, neoprene, or urethane are used in hydrocyclones primarily to:",
+            question: "Designing safer extraction systems addresses:",
             options: [
-              "increase hydraulic efficiency",
-              "reduce erosion from abrasive slurry",
-              "improve particle classification",
-              "regulate internal pressure gradients",
+              "Environmental pollution and waste disposal",
+              "Equipment cost and maintenance schedules",
+              "Operational risks and worker safety concerns",
+              "Ore composition and mineral variability",
             ],
-            correctAnswer: "reduce erosion from abrasive slurry",
+            correctAnswer: "Operational risks and worker safety concerns",
           },
           {
             id: 7,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "A hydraulically or pneumatically adjustable apex sleeve allows operational control primarily by altering:",
+            question: "Sustainable resource use in metallurgy involves:",
             options: [
-              "feed turbulence intensity",
-              "underflow discharge restriction",
-              "vortex finder immersion depth",
-              "slurry density in the feed",
+              "Extracting maximum ore without recycling",
+              "Recycling metals and minimizing impact",
+              "Increasing energy use for faster output",
+              "Expanding mining sites without limits",
             ],
-            correctAnswer: "underflow discharge restriction",
+            correctAnswer: "Recycling metals and minimizing impact",
           },
           {
             id: 8,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "In mineral processing, wet classification is generally preferred for fine particles because the fluid medium primarily enables separation based on:",
+            question: "Improving metal quality for industry requires:",
             options: [
-              "particle charge differences",
-              "particle settling velocities",
-              "particle magnetic susceptibility",
-              "particle compressibility",
+              "Increasing blasting frequency in mining",
+              "Reducing testing in refining processes",
+              "Applying efficient refining techniques",
+              "Expanding exploration to new regions",
             ],
-            correctAnswer: "particle settling velocities",
+            correctAnswer: "Applying efficient refining techniques",
           },
           {
             id: 9,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "Cyclones are commonly used in primary, secondary, and regrind circuits mainly because they:",
+            question: "Higher-grade output with less waste shows:",
             options: [
-              "maintain constant particle density",
-              "rapidly classify fine grinding products",
-              "reduce grinding energy directly",
-              "control chemical composition",
+              "Increased labor demand and reduced output",
+              "Improved recovery and better product quality",
+              "Reduced efficiency and higher processing cost",
+              "Increased exploration and reduced refining",
             ],
-            correctAnswer: "rapidly classify fine grinding products",
+            correctAnswer: "Improved recovery and better product quality",
           },
           {
             id: 10,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "The cylindrical section of a hydrocyclone improves separation primarily because it:",
+            question: "Eco-friendly processing methods mainly lead to:",
             options: [
-              "stabilizes feed pressure fluctuations",
-              "increases slurry retention time",
-              "decreases centrifugal acceleration",
-              "reduces vortex instability",
+              "Increased ore hardness and lower recovery",
+              "Reduced environmental impact and damage",
+              "Increased variability in mineral composition",
+              "Reduced efficiency in processing systems",
             ],
-            correctAnswer: "increases slurry retention time",
+            correctAnswer: "Reduced environmental impact and damage",
           },
           {
             id: 11,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "The conical section angle influences cyclone performance mainly by affecting:",
+            question: "Optimizing ore processing routes helps to:",
             options: [
-              "retention time and particle migration",
-              "feed velocity distribution",
-              "slurry viscosity gradient",
-              "overflow turbulence",
+              "Delay production and increase labor demand",
+              "Improve efficiency and reduce overall costs",
+              "Increase waste generation and lower output",
+              "Eliminate refining and simplify operations",
             ],
-            correctAnswer: "retention time and particle migration",
+            correctAnswer: "Improve efficiency and reduce overall costs",
           },
           {
             id: 12,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "The D50C classification parameter represents a condition where:",
+            question: "Economical beneficiation methods result in:",
             options: [
-              "separation efficiency is maximum",
-              "coarse particles dominate underflow",
-              "equal probability exists for reporting to either product",
-              "overflow particle size becomes constant",
+              "Increased waste and reduced efficiency",
+              "Lower operational cost and better output",
+              "Reduced recovery and increased losses",
+              "Higher labor demand and slower processing",
             ],
-            correctAnswer: "equal probability exists for reporting to either product",
+            correctAnswer: "Lower operational cost and better output",
           },
           {
             id: 13,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "The use of reduced recovery curves in cyclone analysis allows comparison of performance because it:",
+            question: "Supporting exploration decisions involves:",
             options: [
-              "removes dependence on feed density",
-              "normalizes particle size relative to cut size",
-              "eliminates slurry viscosity effects",
-              "corrects centrifugal acceleration",
+              "Managing exports and logistics planning",
+              "Conducting feasibility and material analysis",
+              "Increasing workforce and site expansion",
+              "Reducing testing and speeding extraction",
             ],
-            correctAnswer: "normalizes particle size relative to cut size",
+            correctAnswer: "Conducting feasibility and material analysis",
           },
           {
             id: 14,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "Thickening in mineral processing is mainly applied upstream of downstream processes to:",
+            question: "Minimizing environmental damage while producing metals shows:",
             options: [
-              "improve mineral liberation",
-              "adjust pulp density for subsequent operations",
-              "increase particle hardness",
-              "reduce slurry viscosity",
+              "Increased depletion of mineral resources",
+              "Reduced efficiency in extraction systems",
+              "Sustainable metallurgical practices applied",
+              "Expansion of mining without restrictions",
             ],
-            correctAnswer: "adjust pulp density for subsequent operations",
+            correctAnswer: "Sustainable metallurgical practices applied",
           },
           {
             id: 15,
+            section: "Mining & Metallurgy",
             type: "mcq",
-            question: "Sedimentation tests used in thickener design fundamentally establish how:",
+            question: "Improving process efficiency in mining leads to:",
             options: [
-              "particle density affects grinding efficiency",
-              "settling velocity relates to vessel dimensions",
-              "slurry viscosity changes with pressure",
-              "particle shape controls cyclone separation",
+              "Increased cost and reduced productivity",
+              "Reduced output and higher energy demand",
+              "Lower costs and improved operational performance",
+              "Higher waste and reduced recovery rates",
             ],
-            correctAnswer: "settling velocity relates to vessel dimensions",
+            correctAnswer: "Lower costs and improved operational performance",
           },
         ];
 
@@ -249,14 +265,17 @@
             document.addEventListener("contextmenu", handleContextMenu);
             document.body.style.userSelect = "none";
             document.body.style.webkitUserSelect = "none";
+
             const handleVisibilityChange = () => {
               if (document.hidden) setTabSwitches((prev) => prev + 1);
             };
             document.addEventListener("visibilitychange", handleVisibilityChange);
+
             const handleCopy = (e) => e.preventDefault();
             document.addEventListener("copy", handleCopy);
             document.addEventListener("cut", handleCopy);
             document.addEventListener("paste", handleCopy);
+
             return () => {
               document.removeEventListener("contextmenu", handleContextMenu);
               document.removeEventListener("visibilitychange", handleVisibilityChange);
@@ -292,18 +311,29 @@
             alert("Please enter your name and index number");
             return;
           }
+
           const startButton = document.querySelector("button");
           if (startButton) startButton.disabled = true;
+
           try {
-            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
+            const GOOGLE_SCRIPT_URL =
+              "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
+
             const response = await fetch(`${GOOGLE_SCRIPT_URL}?sheet=Sheet1`);
             const data = await response.json();
-            const alreadyTaken = data.some((record) => String(record.indexNumber).trim() === String(indexNumber).trim());
+
+            const alreadyTaken = data.some((record) => {
+              const recordIndex = String(record.indexNumber).trim();
+              const inputIndex = String(indexNumber).trim();
+              return recordIndex === inputIndex;
+            });
+
             if (alreadyTaken) {
               alert("This index number has already been used to take the quiz. You cannot take the quiz again.");
               if (startButton) startButton.disabled = false;
               return;
             }
+
             setView("quiz");
             setQuestionTimeLeft(TIME_PER_QUESTION);
           } catch (error) {
@@ -329,33 +359,51 @@
 
         const handleSubmitQuiz = async () => {
           if (quizSubmitted) return;
+
           const { rawScore, tabPenalty, finalScore } = calculateScore();
           const totalQuestions = questions.length;
           const percentage = ((finalScore / totalQuestions) * 100).toFixed(1);
+
           const result = {
-            studentName, indexNumber,
+            studentName,
+            indexNumber,
             department: "metallurgical",
             sheet: "Sheet1",
-            rawScore, tabSwitches, tabPenalty, finalScore, totalQuestions, percentage,
+            rawScore,
+            tabSwitches,
+            tabPenalty,
+            finalScore,
+            totalQuestions,
+            percentage,
             timestamp: new Date().toLocaleString(),
           };
+
+          setFinalResults(result);
           setQuizSubmitted(true);
+
           try {
-            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
+            const GOOGLE_SCRIPT_URL =
+              "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
+
             await fetch(GOOGLE_SCRIPT_URL, {
-              method: "POST", mode: "no-cors",
+              method: "POST",
+              mode: "no-cors",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(result),
             });
           } catch (error) {
             console.error("Error submitting results:", error);
           }
+
           setView("thankyou");
         };
 
         const handleAdminLogin = () => {
-          if (adminPassword === ADMIN_PASSWORD) setView("admin");
-          else alert("Incorrect password");
+          if (adminPassword === ADMIN_PASSWORD) {
+            setView("admin");
+          } else {
+            alert("Incorrect password");
+          }
         };
 
         const AdminView = () => {
@@ -367,10 +415,12 @@
           const loadResultsFromSheets = async () => {
             setLoading(true);
             try {
-              const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
+              const GOOGLE_SCRIPT_URL =
+                "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
               const response = await fetch(`${GOOGLE_SCRIPT_URL}?sheet=Sheet1`);
               const data = await response.json();
-              setResults(data.filter(record => !record.sheet || record.sheet === 'Sheet1'));
+              const sheet1Results = data.filter(record => !record.sheet || record.sheet === "Sheet1");
+              setResults(sheet1Results);
               setLoading(false);
             } catch (error) {
               console.error("Error loading results:", error);
@@ -381,8 +431,10 @@
           const calculateStats = () => {
             if (results.length === 0) return { highest: 0, average: 0, lowest: 0 };
             const scores = results.map((r) => {
-              const n = typeof r.finalScore === 'string' ? parseFloat(r.finalScore.toString().split("/")[0]) : parseFloat(r.finalScore);
-              return isNaN(n) ? 0 : n;
+              let numericScore = typeof r.finalScore === "string"
+                ? parseFloat(r.finalScore.toString().split("/")[0])
+                : parseFloat(r.finalScore);
+              return isNaN(numericScore) ? 0 : numericScore;
             });
             return {
               highest: Math.max(...scores),
@@ -398,12 +450,13 @@
               <div className="max-w-7xl mx-auto">
                 <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                   <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-2xl font-bold">Admin Dashboard - METE 451 Quiz</h2>
+                    <h2 className="text-2xl font-bold">Admin Dashboard – METE 151 Quiz</h2>
                     <div className="flex gap-2">
-                      <button onClick={() => loadResultsFromSheets()} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Refresh</button>
+                      <button onClick={loadResultsFromSheets} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Refresh</button>
                       <button onClick={() => setView("start")} className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Exit Admin</button>
                     </div>
                   </div>
+
                   {loading ? (
                     <p>Loading results from Google Sheets...</p>
                   ) : results.length === 0 ? (
@@ -411,7 +464,7 @@
                   ) : (
                     <>
                       <div className="mb-4">
-                        <p className="text-lg font-semibold text-gray-700">Metallurgical Engineering - Hydrocyclone & Classification Quiz</p>
+                        <p className="text-lg font-semibold text-gray-700">Metallurgical Engineering – Mining & Metallurgy Quiz</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                         <div className="bg-blue-50 rounded-lg p-4">
@@ -478,10 +531,11 @@
                 <div className="bg-white rounded-lg shadow-xl p-8">
                   <div className="text-center mb-6">
                     <Lock className="mx-auto h-12 w-12 text-indigo-600 mb-3" />
-                    <h1 className="text-3xl font-bold text-gray-800 mb-2">METE 451 Quiz</h1>
+                    <h1 className="text-3xl font-bold text-gray-800 mb-2">METE 151 Quiz</h1>
                     <p className="text-gray-600">Metallurgical Engineering</p>
-                    <p className="text-sm text-gray-500 mt-1">Hydrocyclone & Classification</p>
+                    <p className="text-sm text-gray-500 mt-1">Mining & Metallurgy</p>
                   </div>
+
                   <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                     <div className="flex">
                       <AlertCircle className="h-5 w-5 text-yellow-400 mr-2 flex-shrink-0" />
@@ -498,30 +552,52 @@
                       </div>
                     </div>
                   </div>
+
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                      <input type="text" value={studentName} onChange={(e) => setStudentName(e.target.value)}
+                      <input
+                        type="text"
+                        value={studentName}
+                        onChange={(e) => setStudentName(e.target.value)}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                        placeholder="Enter your full name" />
+                        placeholder="Enter your full name"
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Index Number</label>
-                      <input type="text" value={indexNumber} onChange={(e) => setIndexNumber(e.target.value)}
+                      <input
+                        type="text"
+                        value={indexNumber}
+                        onChange={(e) => setIndexNumber(e.target.value)}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                        placeholder="Enter your index number" />
+                        placeholder="Enter your index number"
+                      />
                     </div>
-                    <button onClick={handleStartQuiz} className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200">
+                    <button
+                      onClick={handleStartQuiz}
+                      className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200"
+                    >
                       Start Quiz
                     </button>
-                    <button onClick={() => setShowAdminLogin(!showAdminLogin)} className="w-full text-sm text-gray-500 hover:text-gray-700 mt-4">
+                    <button
+                      onClick={() => setShowAdminLogin(!showAdminLogin)}
+                      className="w-full text-sm text-gray-500 hover:text-gray-700 mt-4"
+                    >
                       {showAdminLogin ? "Hide Admin Login" : "Admin Login"}
                     </button>
                     {showAdminLogin && (
                       <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                        <input type="password" value={adminPassword} onChange={(e) => setAdminPassword(e.target.value)}
-                          placeholder="Admin Password" className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2" />
-                        <button onClick={handleAdminLogin} className="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700">Login as Admin</button>
+                        <input
+                          type="password"
+                          value={adminPassword}
+                          onChange={(e) => setAdminPassword(e.target.value)}
+                          placeholder="Admin Password"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+                        />
+                        <button onClick={handleAdminLogin} className="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700">
+                          Login as Admin
+                        </button>
                       </div>
                     )}
                   </div>
@@ -532,19 +608,54 @@
           );
         }
 
-        if (view === "thankyou") {
+        if (view === "thankyou" && finalResults) {
+          const { rawScore, tabPenalty, finalScore, totalQuestions, percentage } = finalResults;
+          const passed = parseFloat(percentage) >= 50;
+          const scoreColor = parseFloat(percentage) >= 70 ? "text-green-600" : parseFloat(percentage) >= 50 ? "text-yellow-600" : "text-red-600";
+          const scoreBg = parseFloat(percentage) >= 70 ? "bg-green-50 border-green-200" : parseFloat(percentage) >= 50 ? "bg-yellow-50 border-yellow-200" : "bg-red-50 border-red-200";
+
           return (
             <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
               <div className="max-w-md w-full">
                 <div className="bg-white rounded-lg shadow-xl p-8">
                   <div className="text-center">
                     <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">Quiz Submitted Successfully!</h2>
-                    <p className="text-gray-600 mb-6">Thank you, {studentName}</p>
-                    <div className="bg-blue-50 rounded-lg p-6 mb-6">
-                      <p className="text-gray-700 text-lg">Your responses have been recorded and submitted to your instructor.</p>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-1">Quiz Submitted!</h2>
+                    <p className="text-gray-500 mb-6">Here are your results, {studentName}</p>
+
+                    {/* Score Card */}
+                    <div className={`rounded-xl border-2 p-6 mb-5 ${scoreBg}`}>
+                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">Your Score</p>
+                      <p className={`text-6xl font-extrabold mb-1 ${scoreColor}`}>{finalScore}<span className="text-2xl text-gray-400">/{totalQuestions}</span></p>
+                      <p className={`text-2xl font-bold ${scoreColor}`}>{percentage}%</p>
+                      <p className={`mt-2 text-sm font-semibold ${passed ? "text-green-700" : "text-red-700"}`}>
+                        {passed ? "✅ Well done!" : "❌ Keep practicing!"}
+                      </p>
                     </div>
-                    <p className="text-sm text-gray-500">Results will be shared by your instructor.</p>
+
+                    {/* Breakdown */}
+                    <div className="bg-gray-50 rounded-lg p-4 mb-5 text-left space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Correct Answers</span>
+                        <span className="font-semibold text-gray-800">{rawScore} / {totalQuestions}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Tab Switches</span>
+                        <span className="font-semibold text-gray-800">{finalResults.tabSwitches}</span>
+                      </div>
+                      {tabPenalty > 0 && (
+                        <div className="flex justify-between">
+                          <span className="text-red-500">Penalty Deducted</span>
+                          <span className="font-semibold text-red-500">-{tabPenalty}</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between border-t pt-2 mt-2">
+                        <span className="text-gray-700 font-semibold">Final Score</span>
+                        <span className={`font-bold text-lg ${scoreColor}`}>{finalScore} / {totalQuestions}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-gray-400">Your results have been submitted to your instructor.</p>
                   </div>
                 </div>
                 <div className="text-center mt-6"><p className="text-sm text-gray-400">©Team Benny</p></div>
@@ -570,25 +681,32 @@
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-lg shadow-md p-4 mb-4">
                 <div className="flex justify-between items-center mb-2">
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-3">
                     <span className="text-sm font-semibold text-gray-700">{studentName} ({indexNumber})</span>
                     <span className="text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded">Metallurgical Engineering</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     {tabSwitches > 0 && (
-                      <span className="text-sm text-red-600 font-semibold">⚠️ Switches: {tabSwitches} (-{(tabSwitches * TAB_SWITCH_PENALTY).toFixed(1)})</span>
+                      <span className="text-sm text-red-600 font-semibold">
+                        ⚠️ Switches: {tabSwitches} (-{(tabSwitches * TAB_SWITCH_PENALTY).toFixed(1)})
+                      </span>
                     )}
                     <div className="flex items-center space-x-2">
-                      <Timer className={`h-5 w-5 ${questionTimeLeft <= 5 ? "text-red-600" : "text-indigo-600"}`} />
-                      <span className={`font-mono font-bold text-xl ${questionTimeLeft <= 5 ? "text-red-600 animate-pulse" : "text-gray-700"}`}>
+                      <Timer className={`h-5 w-5 ${questionTimeLeft <= 6 ? "text-red-600" : "text-indigo-600"}`} />
+                      <span className={`font-mono font-bold text-xl ${questionTimeLeft <= 6 ? "text-red-600 animate-pulse" : "text-gray-700"}`}>
                         {questionTimeLeft}s
                       </span>
                     </div>
                   </div>
                 </div>
+
                 <div className="flex justify-between text-sm text-gray-600 mb-2">
                   <span>Question {currentQuestion + 1} of {questions.length}</span>
+                  <span className="text-xs px-2 py-0.5 rounded font-medium bg-teal-100 text-teal-800">
+                    {question.section}
+                  </span>
                 </div>
+
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div className="bg-indigo-600 h-2 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
                 </div>
@@ -598,18 +716,30 @@
                 <h2 className="text-lg font-bold text-gray-800 mb-6 leading-relaxed">{question.question}</h2>
                 <div className="space-y-3">
                   {question.options.map((option, idx) => (
-                    <label key={idx} className="flex items-start p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-400 hover:bg-indigo-50 transition duration-200">
-                      <input type="radio" name={`question-${question.id}`} value={option}
+                    <label
+                      key={idx}
+                      className="flex items-start p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-400 hover:bg-indigo-50 transition duration-200"
+                    >
+                      <input
+                        type="radio"
+                        name={`question-${question.id}`}
+                        value={option}
                         checked={answers[question.id] === option}
                         onChange={(e) => handleAnswerChange(question.id, e.target.value)}
-                        className="mt-1 mr-3 h-4 w-4 text-indigo-600 flex-shrink-0" />
+                        className="mt-1 mr-3 h-4 w-4 text-indigo-600 flex-shrink-0"
+                      />
                       <span className="text-gray-700">{option}</span>
                     </label>
                   ))}
                 </div>
+
                 <div className="flex justify-end mt-8">
-                  <button onClick={handleNext}
-                    className={`px-8 py-3 rounded-lg font-semibold ${currentQuestion === questions.length - 1 ? "bg-green-600 hover:bg-green-700" : "bg-indigo-600 hover:bg-indigo-700"} text-white`}>
+                  <button
+                    onClick={handleNext}
+                    className={`px-8 py-3 rounded-lg font-semibold ${
+                      currentQuestion === questions.length - 1 ? "bg-green-600 hover:bg-green-700" : "bg-indigo-600 hover:bg-indigo-700"
+                    } text-white`}
+                  >
                     {currentQuestion === questions.length - 1 ? "Submit Quiz" : "Next Question"}
                   </button>
                 </div>
@@ -621,7 +751,7 @@
         );
       };
 
-      const root = ReactDOM.createRoot(document.getElementById('root'));
+      const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<QuizApp />);
     </script>
   </body>
